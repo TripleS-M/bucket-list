@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { api } from './api.js';
-import { Avatar, Modal, Segments, Tick, pad, pct, useClock } from './ui.jsx';
+import { Avatar, Modal, Segments, Tick, pad, pct } from './ui.jsx';
 
 function Hero({ stats, onStart }) {
-  const time = useClock();
   const bars = [6, 9, 12, 15, 18];
   const level = Math.max(1, Math.round((stats.pct / 100) * bars.length));
   return (
@@ -14,7 +13,7 @@ function Hero({ stats, onStart }) {
           <span>// discover</span><span>// plan</span><span>// do it anyway</span>
           <div className="squares"><i /><i /><i /><i /></div>
         </div>
-        <div style={{ textAlign: 'right' }}>archive 09<br />local time {time}</div>
+        <div style={{ textAlign: 'right' }}>archive 09</div>
       </div>
 
       <div className="widgets">

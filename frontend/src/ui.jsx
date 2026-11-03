@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 
 export const pad = (n, w = 4) => String(n).padStart(w, '0');
 export const pct = (done, total) => (total ? Math.round((done / total) * 100) : 0);
@@ -20,16 +20,23 @@ export function Segments({ done, total, n = 14 }) {
   );
 }
 
+// Single-line-semantics textarea that grows to fit wrapped text; Enter commits (blur).
+export function AutoText({ inputRef, onKeyDown, onInput, ...props }) {
+  const own = useRef(null);
+  const ref = inputRef || own;
+  const fit = () => { const el = ref.current; if (el) { el.style.height = 'auto'; el.style.height = `${el.scrollHeight}px`; } };
+  useLayoutEffect(fit);
+  useEffect(() => { window.addEventListener('resize', fit); return () => window.removeEventListener('resize', fit); });
+  return (
+    <textarea ref={ref} rows={1} {...props}
+      onInput={(e) => { fit(); onInput?.(e); }}
+      onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.target.blur(); } onKeyDown?.(e); }} />
+  );
+}
+
 export function Avatar({ author }) {
   if (author.avatarUrl) return <img className="avatar" src={author.avatarUrl} alt="" referrerPolicy="no-referrer" />;
   return <span className="avatar">{author.name?.[0]?.toUpperCase()}</span>;
-}
-
-export function useClock() {
-  const fmt = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
-  const [t, setT] = useState(fmt);
-  useEffect(() => { const id = setInterval(() => setT(fmt()), 15000); return () => clearInterval(id); }, []);
-  return t;
 }
 
 export function Modal({ onClose, wide, children }) {

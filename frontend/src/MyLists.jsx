@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { api } from './api.js';
-import { Segments, Tick, pad, pct } from './ui.jsx';
+import { AutoText, Segments, Tick, pad, pct } from './ui.jsx';
 
 export default function MyLists({ toast }) {
   const [lists, setLists] = useState(null);
@@ -125,9 +125,9 @@ export default function MyLists({ toast }) {
 
         {sel && (
           <section className="editor" key={sel.id}>
-            <input ref={titleRef} className="title-in" defaultValue={sel.title} maxLength={120} aria-label="List title"
+            <AutoText inputRef={titleRef} className="title-in" defaultValue={sel.title} maxLength={120} aria-label="List title"
               onBlur={(e) => { const t = e.target.value.trim(); if (t && t !== sel.title) saveMeta({ title: t }); else e.target.value = sel.title; }} />
-            <textarea className="desc-in" rows={1} defaultValue={sel.description} placeholder="add a description…" maxLength={1000} aria-label="Description"
+            <AutoText className="desc-in" defaultValue={sel.description} placeholder="add a description…" maxLength={1000} aria-label="Description"
               onBlur={(e) => e.target.value.trim() !== sel.description && saveMeta({ description: e.target.value.trim() })} />
 
             <div className="ed-bar">
@@ -149,8 +149,8 @@ export default function MyLists({ toast }) {
                   onDrop={() => drop(idx)} onDragEnd={() => setDrag({ from: null, over: null })}>
                   <span className="grip" aria-hidden>⋮⋮</span>
                   <button className="chk" role="checkbox" aria-checked={item.done} aria-label={`Mark “${item.text}” ${item.done ? 'not done' : 'done'}`} onClick={() => toggle(item)}><Tick size={14} /></button>
-                  <input className="txt" defaultValue={item.text} maxLength={300} aria-label="Item text" key={item.text}
-                    onBlur={(e) => editText(item, e.target.value)} onKeyDown={(e) => e.key === 'Enter' && e.target.blur()} />
+                  <AutoText className="txt" defaultValue={item.text} maxLength={300} aria-label="Item text" key={item.text}
+                    onBlur={(e) => editText(item, e.target.value)} />
                   <button className="del" onClick={() => removeItem(item)} aria-label="Delete item">×</button>
                 </li>
               ))}

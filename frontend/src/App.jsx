@@ -3,7 +3,7 @@ import { api } from './api.js';
 import Auth from './Auth.jsx';
 import Home from './Home.jsx';
 import MyLists from './MyLists.jsx';
-import { Avatar, useClock } from './ui.jsx';
+import { Avatar } from './ui.jsx';
 
 const routeFromHash = () => (location.hash.startsWith('#/mine') ? 'mine' : 'home');
 
@@ -12,7 +12,6 @@ export default function App() {
   const [route, setRoute] = useState(routeFromHash);
   const [authOpen, setAuthOpen] = useState(false);
   const [msg, setMsg] = useState('');
-  const time = useClock();
 
   useEffect(() => {
     api.get('/auth/me').then((r) => setUser(r.user)).catch(() => setUser(null));
@@ -42,10 +41,9 @@ export default function App() {
           <button className={`pill tube${showMine ? ' on' : ''}`} onClick={goMine}>my lists</button>
         </nav>
         <div className="right">
-          <span className="clock mono">local time<br />{time}</span>
           {user ? (
             <>
-              <span className="mono" style={{ display: 'flex', gap: 8, alignItems: 'center' }}><Avatar author={{ name: user.name, avatarUrl: user.avatarUrl }} />{user.name}</span>
+              <span className="mono who"><Avatar author={{ name: user.name, avatarUrl: user.avatarUrl }} />{user.name}</span>
               <button className="pill tube" onClick={logout}>sign out</button>
             </>
           ) : user === null && <button className="pill solid" onClick={() => setAuthOpen(true)}>sign in →</button>}
