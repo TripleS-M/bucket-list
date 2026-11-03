@@ -40,3 +40,15 @@ Auth is an httpOnly cookie, so the frontend must send requests with `credentials
 | GET | `/api/public/lists/:id` | published list (owner can also preview a private one) |
 
 Lists are private until `isPublic: true`. Public responses expose only the author's name and avatar, never email.
+
+## Frontend
+
+React + Vite in `frontend/`. It proxies `/api` to the backend, so run both:
+
+```
+npm run dev                  # API on :3000
+cd frontend && npm install && npm run dev   # UI on :5173
+```
+
+To preview with sample data (separate DB, your real data is untouched): `node --env-file=.env scripts/demo.js`
+starts the API on :3001; then `cd frontend` and run Vite with `PORT=5174 API_URL=http://localhost:3001`.
