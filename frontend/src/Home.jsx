@@ -8,7 +8,7 @@ function Hero({ stats, onStart }) {
   const level = Math.max(1, Math.round((stats.pct / 100) * bars.length));
   return (
     <header className="hero">
-      <img className="chrome" src="/chrome.jpg" alt="" />
+      <img className="chrome" src="/chrome2.jpg" alt="" />
       <div className="hero-top mono">
         <div className="marks">
           <span>// discover</span><span>// plan</span><span>// do it anyway</span>
