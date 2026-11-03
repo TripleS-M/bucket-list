@@ -37,7 +37,7 @@ function Hero({ stats, onStart }) {
         <div>
           <p>Write the list. Cross things off. Publish it to the archive so everyone else can see what you’re chasing.</p>
           <div className="ctas">
-            <button className="pill solid big" onClick={onStart}>start a list →</button>
+            <button className="pill hot big" onClick={onStart}>start a list →</button>
             <a className="pill tube dark big" href="#archive">read the archive ↓</a>
           </div>
         </div>

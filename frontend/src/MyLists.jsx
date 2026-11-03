@@ -98,7 +98,7 @@ export default function MyLists({ toast }) {
       <div className="wrap zero">
         <span className="mono">// 000 lists</span>
         <h2>Nothing on the list.<br />Yet.</h2>
-        <button className="pill solid big" onClick={create}>write the first one →</button>
+        <button className="pill hot big" onClick={create}>write the first one →</button>
       </div>
     );
   }
@@ -109,7 +109,7 @@ export default function MyLists({ toast }) {
     <main className="wrap">
       <div className="sec-head" style={{ paddingTop: 64, paddingBottom: 0 }}>
         <h2><small>// private until you broadcast</small>Your lists</h2>
-        <button className="pill solid big" onClick={create}>+ new list</button>
+        <button className="pill hot big" onClick={create}>+ new list</button>
       </div>
       <div className="studio">
         <aside className="rail">
