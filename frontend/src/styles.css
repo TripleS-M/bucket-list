@@ -263,6 +263,11 @@ footer { margin: 0 20px 20px; padding: 26px 32px; border-radius: 28px; backgroun
 
 .widget.tube.dark { background: linear-gradient(180deg, rgba(9, 49, 141, 0.8), rgba(4, 20, 51, 0.82)); }
 
+/* a touch more pink: logo, active nav dot, focus rings */
+.brand i { background: var(--pink); }
+.pill.on::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--pink); }
+.search:focus, .field input:focus, .add input:focus { box-shadow: 0 0 0 3px rgba(253, 145, 204, 0.55); border-color: var(--hot); }
+
 /* ---------- responsive ---------- */
 @media (max-width: 900px) {
   .top { grid-template-columns: 1fr auto; gap: 10px 12px; padding: 12px 20px; }
