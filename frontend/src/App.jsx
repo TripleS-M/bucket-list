@@ -35,7 +35,12 @@ export default function App() {
   return (
     <>
       <div className="top">
-        <a className="brand" href="#/"><i />Bucket List</a>
+        <a className="brand" href="#/">
+          <svg className="logo" width="22" height="30" viewBox="0 0 16 22" fill="none" strokeWidth="2.6" strokeLinecap="square" aria-hidden>
+            <path d="M3 1v20M13 1v20M3 5h10M3 11h10M3 17h10" />
+          </svg>
+          Bucket List
+        </a>
         <nav>
           <a className={`pill tube${!showMine ? ' on' : ''}`} href="#/">archive</a>
           <button className={`pill tube${showMine ? ' on' : ''}`} onClick={goMine}>my lists</button>

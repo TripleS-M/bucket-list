@@ -3,7 +3,7 @@ import { api } from './api.js';
 import { Avatar, Modal, Segments, Tick, pad, pct } from './ui.jsx';
 
 function Hero({ stats, onStart }) {
-  const bars = [6, 9, 12, 15, 18];
+  const bars = [8, 13, 18, 23, 28];
   const level = Math.max(1, Math.round((stats.pct / 100) * bars.length));
   return (
     <header className="hero">

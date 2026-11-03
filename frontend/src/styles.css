@@ -83,8 +83,8 @@ input, textarea { font: inherit; color: inherit; }
   padding: 14px 32px;
   background: linear-gradient(var(--paper) 72%, rgba(231, 238, 248, 0));
 }
+.logo { stroke: #ee5fb0; flex: none; transform: rotate(8deg); }
 .brand { font-family: var(--display); font-variation-settings: 'wdth' 140, 'wght' 800; font-size: 17px; letter-spacing: 0.02em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
-.brand i { width: 14px; height: 14px; background: var(--cobalt); border-radius: 50% 0; display: inline-block; transform: rotate(45deg); box-shadow: 0 0 0 1.5px var(--ink); }
 .top nav { display: flex; gap: 8px; }
 .top .right { justify-self: end; display: flex; align-items: center; gap: 12px; }
 .who { display: flex; gap: 8px; align-items: center; }
@@ -128,8 +128,8 @@ input, textarea { font: inherit; color: inherit; }
 .widget { padding: 12px 20px 14px; border-radius: 24px; min-width: 160px; }
 .widget .mono { opacity: 0.85; }
 .widget .big { font-family: var(--display); font-variation-settings: 'wdth' 120, 'wght' 700; font-size: 34px; line-height: 1; margin-top: 4px; }
-.bars { display: flex; align-items: flex-end; gap: 3px; height: 18px; margin-top: 6px; }
-.bars i { width: 5px; background: #fff; }
+.bars { display: flex; align-items: flex-end; gap: 4px; height: 28px; margin-top: 6px; }
+.bars i { width: 8px; background: #fff; border-radius: 2px; }
 @media (max-width: 1180px) { .widgets { display: none; } }
 
 /* ---------- section heads ---------- */
@@ -263,10 +263,14 @@ footer { margin: 0 20px 20px; padding: 26px 32px; border-radius: 28px; backgroun
 
 .widget.tube.dark { background: linear-gradient(180deg, rgba(9, 49, 141, 0.8), rgba(4, 20, 51, 0.82)); }
 
-/* a touch more pink: logo, active nav dot, focus rings */
-.brand i { background: var(--pink); }
+/* a touch more pink: active nav dot, focus rings, hero stat widgets */
 .pill.on::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--pink); }
 .search:focus, .field input:focus, .add input:focus { box-shadow: 0 0 0 3px rgba(253, 145, 204, 0.55); border-color: var(--hot); }
+
+.widget.tube.dark { border-color: rgba(253, 145, 204, 0.75); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 -8px 14px rgba(6, 20, 60, 0.45), 0 0 0 1px rgba(2, 8, 30, 0.7), 0 0 22px -6px rgba(253, 145, 204, 0.55); }
+.widget .big { color: var(--pink); }
+.widget .mono { color: #ffd3ec; }
+.bars i { background: var(--pink); }
 
 /* ---------- responsive ---------- */
 @media (max-width: 900px) {
